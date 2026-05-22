@@ -11,8 +11,8 @@ const CartSummary = () => {
 
   const dispatch = useDispatch();
   return (
-    <div className="h-fit rounded-2xl border  p-6 shadow-sm">
-      <h2 className="mb-6 text-xl font-bold">Order Summary</h2>
+    <div className="h-fit rounded-2xl border  p-6 shadow-sm bg-white dark:bg-gray-900 dark:text-white">
+      <h2 className="mb-6 text-xl font-bold text-center">Order Summary</h2>
       <div className="space-y-4">
         <div className="flex justify-between">
           <span>Total products</span>

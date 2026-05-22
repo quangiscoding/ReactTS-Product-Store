@@ -11,7 +11,9 @@ const CartButton = () => {
   return (
     <>
       {user ? (
-        <span className="text-sm text-gray-600">Hi {user.username}</span>
+        <span className="text-sm text-gray-600 dark:text-white">
+          Hi {user.username}
+        </span>
       ) : (
         <></>
       )}

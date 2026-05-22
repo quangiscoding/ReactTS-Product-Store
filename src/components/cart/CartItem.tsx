@@ -23,21 +23,23 @@ const CartItemEl = ({ item }: CartItemProps) => {
 
   const { name, price, description, image } = product;
   return (
-    <li className="h-40 border-[0.5px] border-gray-200">
+    <li className="h-40 border-[0.5px] border-gray-200 bg-white dark:bg-gray-900">
       <div className="h-full flex">
         <div className="h-full max-w-[20%] flex">
           <img src={image} alt={name} className="object-cover object-center" />
         </div>
         {/* Content */}
         <div className="px-4 py-2 flex flex-col justify-between">
-          <h2 className="text-2xl font-bold">{name}</h2>
-          <p className="text-md italic text-gray-700">{description}</p>
+          <h2 className="text-2xl font-bold dark:text-white">{name}</h2>
+          <p className="text-md italic text-gray-700 dark:text-white">
+            {description}
+          </p>
           <span className="text-blue-400 text-xl font-bold">${price}</span>
         </div>
         {/* Buttons */}
         <div className="ml-auto mr-4 flex flex-col items-center justify-center gap-4">
           {/* Increase - Decrease */}
-          <div className="flex items-center rounded-xl shadow-sm overflow-hidden">
+          <div className="flex items-center rounded-xl shadow-sm overflow-hidden bg-white dark:bg-gray-900 dark:text-white">
             <button
               className="px-3 py-2 text-lg font-bold cursor-pointer hover:bg-gray-100 active:bg-white transition"
               onClick={() => {

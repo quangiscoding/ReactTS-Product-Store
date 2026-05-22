@@ -13,8 +13,8 @@ const Login = () => {
   const error = useSelector(selectError);
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="max-w-xl w-full rounded-lg shadow-lg p-8">
+    <div className="min-h-screen flex items-center justify-center bg-white dark:bg-gray-500">
+      <div className="max-w-xl w-full rounded-lg shadow-lg p-8 bg-white dark:bg-gray-900 dark:text-white">
         <div className="flex flex-col gap-8 items-center">
           <h2 className="text-3xl font-bold">Login</h2>
           <div className="w-full flex flex-col gap-6">

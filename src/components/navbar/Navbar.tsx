@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import CartButton from "./CartButton.tsx";
+import ThemeButton from "./ThemeButton.tsx";
 import AuthButton from "./AuthButton.tsx";
+import SearchBox from "./SearchBox.tsx";
 interface NavbarProps {
   showSearch: boolean;
 }
@@ -11,24 +13,19 @@ const Navbar = ({ showSearch }: NavbarProps) => {
       <div className="w-full mx-auto px-6 py-4 flex items-center justify-between gap-4">
         {/* Logo */}
         <Link
-          className="text-2xl font-bold text-blue-600 whitespace-nowrap"
+          className="text-2xl font-bold text-blue-600 dark:text-blue-400 whitespace-nowrap transition"
           to="/"
         >
           Minh Quang Galaxy
         </Link>
 
         {/* Search */}
-        {showSearch && (
-          <input
-            type="text"
-            placeholder="Search products..."
-            className="input input-search"
-          />
-        )}
+        {showSearch && <SearchBox />}
 
         {/* Right side */}
         <div className="flex items-center gap-3">
           <CartButton />
+          <ThemeButton />
           <AuthButton />
         </div>
       </div>

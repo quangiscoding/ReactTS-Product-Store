@@ -1,4 +1,4 @@
-type Category = "phone" | "laptop" | "headphone" | "screen";
+export type Category = "phone" | "laptop" | "tablet" | "headphones" | "watch";
 export interface Product {
   id: number;
   name: string;

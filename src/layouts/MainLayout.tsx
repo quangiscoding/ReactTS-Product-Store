@@ -7,7 +7,7 @@ type MainLayoutProps = {
 };
 
 const MainLayout = ({ children, showSearch = true }: MainLayoutProps) => (
-  <div className="w-full min-h-screen bg-white dark:bg-gray">
+  <div className="w-full min-h-screen bg-white dark:bg-gray-600">
     <Navbar showSearch={showSearch} />
     <main className="max-w-360 py-10 mx-auto">{children}</main>
   </div>
