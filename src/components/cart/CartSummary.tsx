@@ -1,21 +1,13 @@
-import type { RootState } from "../../app/store.ts";
+import {
+  selectTotalQuantity,
+  selectSubtotal,
+} from "../../features/cart/cartSelectors.ts";
 import { clearCart } from "../../features/cart/cartSlice.ts";
 import { useDispatch, useSelector } from "react-redux";
 
 const CartSummary = () => {
-  const cartItems = useSelector((state: RootState) => state.cart.cartItems);
-  const products = useSelector((state: RootState) => state.products);
-  const totalQuantity = Object.values(cartItems).reduce(
-    (acc, item) => acc + item.quantity,
-    0,
-  );
-  const subtotal = Object.values(cartItems).reduce((acc, item) => {
-    const product = products.find((p) => p.id === item.productId);
-
-    if (!product) return acc;
-
-    return acc + product.price * item.quantity;
-  }, 0);
+  const totalQuantity = useSelector(selectTotalQuantity);
+  const subtotal = useSelector(selectSubtotal);
 
   const dispatch = useDispatch();
   return (

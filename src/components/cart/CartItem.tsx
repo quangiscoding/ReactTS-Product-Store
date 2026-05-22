@@ -1,4 +1,4 @@
-import type { CartItem } from "../../types/item.type.ts";
+import type { CartItem } from "../../features/cart/cartItem.type.ts";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../../app/store.ts";
 import {
