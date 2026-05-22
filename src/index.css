@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded border transition cursor-pointer text-center font-medium active:scale-95;
+  }
+
+  .btn-flex {
+    @apply flex-1;
+  }
+
+  .btn-primary {
+    @apply bg-blue-500 text-white border-blue-500 hover:bg-blue-600;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-gray-700 border-gray-300 hover:bg-gray-100;
+  }
+
+  .btn-danger {
+    @apply text-white font-semibold cursor-pointer bg-red-500 hover:bg-red-600 active:scale-98 transition;
+  }
+
+  .input {
+    @apply w-full border border-gray-500 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500;
+  }
+
+  .input-search {
+    @apply max-w-2xl;
+  }
+}
