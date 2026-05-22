@@ -2,7 +2,9 @@ import type { Product } from "../../types/product.type.ts";
 
 import { addProduct } from "../../features/cart/cartSlice.ts";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser } from "../../features/auth/authSelector.ts";
+import { useNavigate } from "react-router-dom";
 
 interface ProductCardProps {
   product: Product;
@@ -12,8 +14,15 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const { name, price, image, description } = product;
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const user = useSelector(selectUser);
 
   const handleAddToCart = () => {
+    if (!user) {
+      alert("Please login first");
+      navigate("/login");
+    }
     dispatch(addProduct(product.id));
   };
 

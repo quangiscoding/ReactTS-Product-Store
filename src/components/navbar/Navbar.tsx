@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import CartButton from "./CartButton.tsx";
-
+import AuthButton from "./AuthButton.tsx";
 interface NavbarProps {
   showSearch: boolean;
 }
@@ -16,7 +16,8 @@ const Navbar = ({ showSearch }: NavbarProps) => {
         >
           Minh Quang Galaxy
         </Link>
-        {/* Search bar */}
+
+        {/* Search */}
         {showSearch && (
           <input
             type="text"
@@ -24,12 +25,11 @@ const Navbar = ({ showSearch }: NavbarProps) => {
             className="input input-search"
           />
         )}
+
         {/* Right side */}
         <div className="flex items-center gap-3">
           <CartButton />
-          <Link to="/login" className="btn btn-primary">
-            Login
-          </Link>
+          <AuthButton />
         </div>
       </div>
     </header>

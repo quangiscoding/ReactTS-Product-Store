@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { products } from "../../mock/product.ts";
+import { products } from "../../mock/data/product.data.ts";
 import type { Product } from "../../types/product.type.ts";
 
 const initialState: Product[] = products;

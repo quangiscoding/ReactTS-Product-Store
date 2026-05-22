@@ -1,5 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { AuthState } from "./auth.type.ts";
 import type { User } from "../../types/user.type";
 
@@ -7,7 +6,7 @@ const initialState: AuthState = {
   user: null,
   token: null,
   isAuthenticated: false,
-  isLoading: true,
+  isLoading: false,
   error: null,
 };
 
@@ -18,6 +17,7 @@ const authSlice = createSlice({
     loginStart: (state) => {
       state.isLoading = true;
       state.error = null;
+      state.isAuthenticated = false;
     },
 
     loginSuccess: (
@@ -28,23 +28,26 @@ const authSlice = createSlice({
       state.token = action.payload.token;
       state.isAuthenticated = true;
       state.isLoading = false;
+      state.error = null;
     },
 
     loginFailed: (state, action: PayloadAction<string>) => {
       state.error = action.payload;
       state.isLoading = false;
+      state.isAuthenticated = false;
     },
 
     logout: (state) => {
       state.user = null;
       state.token = null;
       state.isAuthenticated = false;
-      state.error = null;
       state.isLoading = false;
+      state.error = null;
     },
   },
 });
 
 export const { loginStart, loginSuccess, loginFailed, logout } =
   authSlice.actions;
+
 export default authSlice.reducer;

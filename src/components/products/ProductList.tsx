@@ -1,4 +1,4 @@
-import type { Product } from "../../mock/product.ts";
+import type { Product } from "../../types/product.type.ts";
 import ProductCard from "./ProductCard.tsx";
 
 interface ProductListProps {

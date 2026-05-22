@@ -1,4 +1,4 @@
-import type { Product } from "../types/product.type.ts";
+import type { Product } from "../../types/product.type.ts";
 
 export const products: Product[] = Array.from({ length: 50 }, (_, i) => {
   return {

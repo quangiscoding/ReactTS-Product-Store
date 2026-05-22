@@ -1,53 +1,17 @@
-import { mockUsers } from "../../mock/users.ts";
-
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-import { useDispatch } from "react-redux";
-import {
-  loginStart,
-  loginSuccess,
-  loginFailed,
-} from "../../features/auth/authSlice.ts";
+import { selectError } from "../../features/auth/authSelector.ts";
+import LoginBtn from "./LoginBtn.tsx";
 
 const Login = () => {
   const [form, setForm] = useState({
     username: "",
     password: "",
   });
+  const error = useSelector(selectError);
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  const handleLogin = () => {
-    try {
-      dispatch(loginStart());
-
-      const foundUser = mockUsers.find(
-        (u) => u.username === form.username && u.password === form.password,
-      );
-
-      if (!foundUser) {
-        dispatch(loginFailed("Invalid username or password"));
-        return;
-      }
-
-      dispatch(
-        loginSuccess({
-          user: {
-            userId: foundUser.userId,
-            username: foundUser.username,
-            role: foundUser.role,
-          },
-          token: "fake-token",
-        }),
-      );
-
-      navigate("/");
-    } catch (error) {
-      dispatch(loginFailed("Something went wrong"));
-    }
-  };
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="max-w-xl w-full rounded-lg shadow-lg p-8">
@@ -82,15 +46,13 @@ const Login = () => {
                 }
               />
             </div>
+            {/* Error */}
+            <span className="text-xl text-red-500 text-center italic">
+              {error}
+            </span>
             {/* Buttons */}
             <div className="flex gap-4">
-              <button
-                type="button"
-                className="btn btn-flex btn-primary"
-                onClick={handleLogin}
-              >
-                Login
-              </button>
+              <LoginBtn form={form} />
               <Link to="/" className="btn btn-flex btn-secondary">
                 Back to home
               </Link>
