@@ -10,7 +10,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginMock } from "../../mock/services/auth.service.ts";
 import { selectIsLoading } from "../../features/auth/authSelector.ts";
 
-const LoginBtn = ({ form }) => {
+interface LoginForm {
+  username: string;
+  password: string;
+}
+
+interface LoginBtnProps {
+  form: LoginForm;
+}
+
+const LoginBtn = ({ form }: LoginBtnProps) => {
   const isLoading = useSelector(selectIsLoading);
 
   const navigate = useNavigate();
